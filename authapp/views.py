@@ -20,7 +20,8 @@ class LogoutView(APIView):
             token = RefreshToken(refresh_token)
             token.blacklist()
             return Response(status=205)
-        except Exception:
+        except Exception as e:
+            print(e)
             return Response(status=400)
 
 class UserDetailView(generics.RetrieveAPIView):
